@@ -24,19 +24,19 @@ def cacheHandler(function): #My implementation of memozation and my very own cac
 @cacheHandler
 def API_caller(args): # wrapper function for any api calling to fetch api objects. The idea is to also cache thoes calls.
     urlResource = ""
-    if isinstance(args,str):
+    if isinstance(args,str): #If function is being called by the URL of the resource .
         urlResource = args
-    elif isinstance(args,tuple):
+    elif isinstance(args,tuple): #If the function is being called by the class of the object and by it's ID or name.
         urlResource = f"https://pokeapi.co/api/v2/{args[0]}/{args[1]}/"
     else:
-        return "ERROR Invalid use of API_caller function."+str(type(args))
+        return "ERROR Invalid use of API_caller function."
     ErrorCode = f"Error Invalid Command/Input,in : {urlResource}"
     apiResource = requests.get(urlResource)
-    if apiResource.status_code != 200:
+    if apiResource.status_code != 200: #Invalid GET.
         return ErrorCode
     try:
         answer = apiResource.json()
-    except ValueError:
+    except ValueError:#Isn't a json format file.
         answer = ErrorCode
     return answer #Returns the api object that had been requested. 
     
