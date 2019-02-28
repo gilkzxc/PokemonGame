@@ -99,7 +99,6 @@ while stateOfGame == "START GAME": #Game loop, starts at 'START GAME'.
         MatchResult = 1
         for i in listOfPokemonsNames:
             tempMultiplier = moveName_Against_pokemonName_strengthResult(nameOfMove,i)
-            #tempMultiplier = type_Against_type_strengthResult(pokebase.type_(nameOfMove),pokebase.type_(i))
             if isinstance(tempMultiplier,str): #If tempMultiplier is a string, not an integer/result, it is returns an error.
                 print("Error in Input")#Prints to the player that he used an incorrect input.
                 print(tempMultiplier)
